@@ -16,15 +16,18 @@ interface TodoContainerProps {
   deleteToDo: (idx: number) => object;
 }
 
-class TodoContainer extends React.Component<TodoContainerProps, TodoContainerState> {
-  constructor(props) {
+class TodoContainer extends React.Component<
+  TodoContainerProps,
+  TodoContainerState
+> {
+  constructor(props: any) {
     super(props);
     this.state = {
       todoInput: ""
     };
   }
 
-  handleTextChange = e => {
+  handleTextChange = (e: any) => {
     this.setState({
       todoInput: e.target.value
     });
@@ -49,7 +52,12 @@ class TodoContainer extends React.Component<TodoContainerProps, TodoContainerSta
     } else {
       todoJSX = this.props.todoList.map((item, idx) => {
         return (
-          <TodoItem item={item} key={idx} idx={idx} handleDelete={this.handleDeleteButtonClick} />
+          <TodoItem
+            item={item}
+            key={idx}
+            idx={idx}
+            handleDelete={this.handleDeleteButtonClick}
+          />
         );
       });
     }
@@ -77,10 +85,8 @@ const MapStateToProps = (store: MyTypes.ReducerState) => {
 
 const MapDispatchToProps = (dispatch: Dispatch<MyTypes.RootAction>) => ({
   addToDo: (item: string) => dispatch({ type: actionTypes.ADD, payload: item }),
-  deleteToDo: (idx: number) => dispatch({ type: actionTypes.DELETE, payload: idx })
+  deleteToDo: (idx: number) =>
+    dispatch({ type: actionTypes.DELETE, payload: idx })
 });
 
-export default connect(
-  MapStateToProps,
-  MapDispatchToProps
-)(TodoContainer);
+export default connect(MapStateToProps, MapDispatchToProps)(TodoContainer);

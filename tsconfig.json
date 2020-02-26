@@ -2,10 +2,27 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build/dist",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "react"
-  }
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "src"
+  ]
 }
